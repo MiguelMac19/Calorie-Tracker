@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalorieTrack</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f0f9ff;
+    }
+
+    .navbar {
+      background: #0c4a6e !important;
+    }
+
+    .navbar-brand span {
+      color: #7dd3fc;
+    }
+
+    .hero {
+      background: linear-gradient(to bottom right, #0c4a6e, #0369a1);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .btn-info {
+      background-color: #0284c7;
+      border-color: #0284c7;
+    }
+
+    .btn-info:hover {
+      background-color: #0369a1;
+      border-color: #0369a1;
+    }
+
+    .table thead {
+      background-color: #e0f2fe;
+    }
+
+    .card {
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Calorie<span>Track</span></a>
+    <div class="d-flex gap-2">
+      <a href="login.html" class="btn btn-outline-light">Log In</a>
+      <a href="register.html" class="btn btn-info text-white">Sign Up Free</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1>Track Calories.<br>Reach Your Goals.</h1>
+    <p class="mx-auto" style="max-width: 500px;">A clean and simple way to track your daily meals and stay on top of your nutrition.</p>
+    <div class="d-flex gap-3 justify-content-center">
+      <a href="register.html" class="btn btn-light btn-lg">Get Started Free!</a>
+      <a href="login.html" class="btn btn-outline-light btn-lg">Log In</a>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<div class="container my-5">
+  <h2 class="text-center mb-4">Why CalorieTrack?</h2>
+  <div class="row g-3 mb-5">
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Search the Nutrition Databse</h5>
+          <p class="card-text text-muted">Browse our extensive nutrition database and find accurate calorie information instantly.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Log Meals with Ease</h5>
+          <p class="card-text text-muted">Tracking your meals is simple. Add items to your daily log in seconds.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Track You Progress</h5>
+          <p class="card-text text-muted">View daily calorie totals at a glance. Premium members also get 30 day history tracking </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Free vs Premium table -->
+  <h2 class="text-center mb-4">Free vs Premium</h2>
+  <div class="card mx-auto" style="max-width: 600px;">
+    <div class="card-body p-0">
+      <table class="table table-striped mb-0">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="text-center">Free</th>
+            <th class="text-center">Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Search Nutrition Database</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+          <tr><td>Log Daily Meals</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+          <tr><td>View Today's Dashboard</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+          <tr><td>30 Day History</td><td class="text-center">No</td><td class="text-center">Yes</td></tr>
+          <tr><td>Create and Track Custom Meals </td><td class="text-center">No</td><td class="text-center">Yes</td></tr>
+          <tr><td>Macronutrient Tracking</td><td class="text-center">No</td><td class="text-center">Yes</td></tr>
+
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer text-center bg-white">
+      <a href="register.html" class="btn btn-info text-white btn-lg">Sign Up Free</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
