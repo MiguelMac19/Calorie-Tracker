@@ -1,26 +1,47 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<div class="container my-5" style="max-width: 600px;">
-  <div class="card">
-    <div class="card-header bg-primary text-white"><h5>Add New Food Entry</h5></div>
-    <div class="card-body">
-      <form>
+
+
+<nav class="navbar navbar-dark navbar-expand">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Calorie<span>Track</span></a>
+    <div class="navbar-nav me-auto">
+      <a href="admin-dashboard.html" class="nav-link">Admin Dashboard</a>
+      <a href="food-database-browser.html" class="nav-link">Food Database Browser</a>
+      <a href="add-food.html" class="nav-link active">Add Food</a>
+      <a href="user-management.html" class="nav-link">Manage Users</a>
+    </div>
+    <div class="d-flex gap-2 align-items-center">
+      <a href="" class="btn btn-outline-light btn-sm">Upgrade</a>
+      <span class="text-white-50 small">John Doe</span>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container" style="max-width: 550px;">
+  <div class="my-5">
+    <h2 class="mb-4">Add New Food Entry</h2>
+    <div class="card">
+      <div class="card-body">
         <div class="mb-3">
           <label class="form-label">Food Name</label>
-          <input type="text" class="form-control" placeholder="e.g. Avocado">
+          <input class="form-control" placeholder="e.g. Avocado">
         </div>
+
         <div class="row">
           <div class="col-md-6 mb-3">
             <label class="form-label">Calories</label>
-            <input type="number" class="form-control">
+            <input type="number" class="form-control" placeholder="0">
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">Serving Description</label>
             <input type="text" class="form-control" placeholder="1 cup or 100g">
           </div>
         </div>
-        <button type="submit" class="btn btn-primary w-100">Save to Database</button>
-      </form>
+        <a class="btn btn-info text-white w-100 btn-lg">Save to Database</a>
+      </div>
     </div>
   </div>
 </div>
