@@ -44,3 +44,56 @@ body {
     .card {
       border-radius: 15px;
     }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: bold;
+      color: #0c4a6e;
+    }
+
+    .badge-free {
+      background-color: #e0f2fe;
+      color: #0369a1;
+      padding: 5px 12px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .link-blue {
+      color: #0284c7;
+      text-decoration: none;
+    }
+
+    .link-blue:hover {
+      color: #0369a1;
+      text-decoration: underline;
+    }
+
+    .badge-meal {
+      background-color: #f0f9ff;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+      padding: 4px 10px;
+      border-radius: 5px;
+      font-size: 13px;
+      font-weight: normal;
+    }
+
+    .total-row {
+      background-color: #e0f2fe;
+      padding: 15px;
+      text-align: right;
+      font-weight: bold;
+      font-size: 18px;
+      color: #0c4a6e;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+
+    footer {
+      background-color: #0c4a6e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
