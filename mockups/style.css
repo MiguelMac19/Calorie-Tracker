@@ -1,102 +1,102 @@
 body {
-      background: #f0f9ff;
-    }
+  background: #f0f9ff;
+}
 
-    .navbar {
-      background: #0c4a6e !important;
-    }
+.navbar {
+  background: #0c4a6e !important;
+}
 
-    .navbar-brand span {
-      color: #7dd3fc;
-    }
+.navbar-brand span {
+  color: #7dd3fc;
+}
 
-    .hero {
-      background: linear-gradient(to bottom right, #0c4a6e, #0369a1);
-      color: white;
-      padding: 80px 20px;
-      text-align: center;
-    }
+.hero {
+  background: linear-gradient(to bottom right, #0c4a6e, #0369a1);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
 
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
 
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
+.hero p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
 
-    .btn-info {
-      background-color: #0284c7;
-      border-color: #0284c7;
-    }
+.btn-info {
+  background-color: #0284c7;
+  border-color: #0284c7;
+}
 
-    .btn-info:hover {
-      background-color: #0369a1;
-      border-color: #0369a1;
-    }
+.btn-info:hover {
+  background-color: #0369a1;
+  border-color: #0369a1;
+}
 
-    .table thead {
-      background-color: #e0f2fe;
-    }
+.table thead {
+  background-color: #e0f2fe;
+}
 
-    .card {
-      border-radius: 15px;
-    }
+.card {
+  border-radius: 15px;
+}
 
-    .stat-value {
-      font-size: 32px;
-      font-weight: bold;
-      color: #0c4a6e;
-    }
+.stat-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #0c4a6e;
+}
 
-    .badge-free {
-      background-color: #e0f2fe;
-      color: #0369a1;
-      padding: 5px 12px;
-      border-radius: 5px;
-      font-size: 14px;
-    }
+.badge-free {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+}
 
-    .link-blue {
-      color: #0284c7;
-      text-decoration: none;
-    }
+.link-blue {
+  color: #0284c7;
+  text-decoration: none;
+}
 
-    .link-blue:hover {
-      color: #0369a1;
-      text-decoration: underline;
-    }
+.link-blue:hover {
+  color: #0369a1;
+  text-decoration: underline;
+}
 
-    .badge-meal {
-      background-color: #f0f9ff;
-      color: #0369a1;
-      border: 1px solid #bae6fd;
-      padding: 4px 10px;
-      border-radius: 5px;
-      font-size: 13px;
-      font-weight: normal;
-    }
+.badge-meal {
+  background-color: #f0f9ff;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: normal;
+}
 
-    .total-row {
-      background-color: #e0f2fe;
-      padding: 15px;
-      text-align: right;
-      font-weight: bold;
-      font-size: 18px;
-      color: #0c4a6e;
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-    }
+.total-row {
+  background-color: #e0f2fe;
+  padding: 15px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 18px;
+  color: #0c4a6e;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
 
-    footer {
-      background-color: #0c4a6e;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-    }
+footer {
+  background-color: #0c4a6e;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
 
 .page-header {
   background: linear-gradient(to right, #0c4a6e, #0369a1);
