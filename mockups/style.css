@@ -97,3 +97,64 @@ body {
       padding: 20px;
       margin-top: 50px;
     }
+
+.page-header {
+  background: linear-gradient(to right, #0c4a6e, #0369a1);
+  color: white;
+  padding: 30px 0;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.page-header p {
+  margin-bottom: 0;
+  opacity: 0.85;
+}
+
+.day-card {
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+  cursor: pointer;
+}
+
+.day-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.macro-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.macro-protein {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.macro-carbs {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.macro-fat {
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+.macro-fiber {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-active {
+  color: #059669;
+  font-weight: 600;
+}
