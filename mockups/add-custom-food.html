@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Foods - CalorieTrack</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark navbar-expand">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Calorie<span>Track</span></a>
+        <div class="navbar-nav me-auto">
+          <a href="dashboard.html" class="nav-link">Dashboard</a>
+          <a href="search-food.html" class="nav-link">Search Food</a>
+          <a href="food-log.html" class="nav-link">My Log</a>
+          <a href="history.html" class="nav-link">History</a>
+          <a href="add-custom-food.html" class="nav-link active"
+            >Add Custom Food</a
+          >
+        </div>
+        <div class="d-flex gap-2 align-items-center navbar-nav">
+          <a href="premium-upgrade.html" class="btn btn-outline-light btn-sm"
+            >Upgrade</a
+          >
+          <a href="user-management.html" class="nav-link">John Doe</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page header -->
+    <div class="page-header text-center">
+      <div class="container mt-4">
+        <h1>Custom Foods</h1>
+        <p>Create and manage your own food items for easy logging.</p>
+      </div>
+    </div>
+
+    <div class="container mt-4 mb-5">
+      <div class="row g-4">
+        <!-- Form for entering new custom food -->
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body p-4">
+              <h5 class="mb-4">Add New Custom Food</h5>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold"
+                  >Food Name <span class="text-danger">*</span></label
+                >
+                <input type="text" class="form-control" />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold"
+                  >Serving Size Description
+                  <span class="text-danger">*</span></label
+                >
+                <input type="text" class="form-control" />
+              </div>
+
+              <hr class="my-3" />
+              <h6 class="text-muted mb-3">
+                Nutritional Information (per serving)
+              </h6>
+
+              <!-- Calories entry -->
+              <div class="mb-3">
+                <label class="form-label fw-semibold"
+                  >Calories <span class="text-danger">*</span></label
+                >
+                <div class="input-group">
+                  <input
+                    type="number"
+                    class="form-control"
+                    placeholder="0"
+                    min="0"
+                  />
+                  <span class="input-group-text">cal</span>
+                </div>
+              </div>
+
+              <!-- Protein entry -->
+              <div class="row g-3 mb-3">
+                <div class="col-6">
+                  <label class="form-label fw-semibold"
+                    >Protein <span class="text-danger">*</span></label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="0"
+                      min="0"
+                    />
+                    <span class="input-group-text">g</span>
+                  </div>
+                </div>
+
+                <!-- Fiber entry -->
+                <div class="col-6">
+                  <label class="form-label fw-semibold"
+                    >Fiber <span class="text-danger">*</span></label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="0"
+                      min="0"
+                    />
+                    <span class="input-group-text">g</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Carbs entry -->
+              <div class="row g-3 mb-4">
+                <div class="col-6">
+                  <label class="form-label fw-semibold"
+                    >Carbohydrates <span class="text-danger">*</span></label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="0"
+                      min="0"
+                    />
+                    <span class="input-group-text">g</span>
+                  </div>
+                </div>
+
+                <!-- Fat entry -->
+                <div class="col-6">
+                  <label class="form-label fw-semibold"
+                    >Fat <span class="text-danger">*</span></label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="0"
+                      min="0"
+                    />
+                    <span class="input-group-text">g</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button class="btn btn-info text-white flex-grow-1">
+                  Save Custom Food
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example data (previously made foods) -->
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body p-4">
+              <div
+                class="d-flex justify-content-between align-items-center mb-4"
+              >
+                <h5 class="mb-0">My Custom Foods</h5>
+                <span class="badge bg-primary rounded-pill">1 item</span>
+              </div>
+
+              <!-- Custom food entry -->
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                      <h6 class="mb-1">Overnight Oats</h6>
+                      <small class="text-muted">Serving: 1 jar</small>
+                    </div>
+                    <span class="badge bg-primary rounded-pill">285 cal</span>
+                  </div>
+                  <div class="d-flex gap-2 flex-wrap mt-2">
+                    <span class="macro-badge macro-protein">P: 12g</span>
+                    <span class="macro-badge macro-carbs">C: 42g</span>
+                    <span class="macro-badge macro-fat">F: 9g</span>
+                    <span class="macro-badge macro-fiber">Fiber: 6g</span>
+                  </div>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-secondary me-1">
+                      Edit
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger">
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
