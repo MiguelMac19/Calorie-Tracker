@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Search</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+<nav class="navbar navbar-dark navbar-expand">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Calorie<span>Track</span></a>
+    <div class="navbar-nav me-auto">
+      <a href="dashboard.html" class="nav-link">Dashboard</a>
+      <a href="search-food.html" class="nav-link active">Search Food</a>
+      <a href="" class="nav-link">My Log</a>
+    </div>
+    <div class="d-flex gap-2 align-items-center">
+      <a href="" class="btn btn-outline-light btn-sm">Upgrade</a>
+      <span class="text-white-50 small">John Doe</span>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container" style="max-width: 700px;">
+  <div class="my-4">
+    <h2 class="mb-4">Search Food Database</h2>
+
+    
+    <div class="card mb-4">
+      <div class="card-body">
+        <label class="form-label">Search for a food item</label>
+        <div class="input-group mb-2">
+          <input class="form-control" type="text" placeholder="e.g. apple, chicken breast, brown rice..." value="chicken">
+          <a href="" class="btn btn-info text-white">Search</a>
+        </div>
+        <div class="form-text">Enter at least 1 character. Results show food name, serving size, and calories.</div>
+
+       
+        <div class="alert alert-danger mt-2" style="display: none;">
+          Please enter a food name to search.
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="text-muted small mb-2">Showing <strong>5 results</strong> for "chicken"</div>
+    <div class="card">
+      <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>Food Name</th>
+              <th>Serving Size</th>
+              <th>Calories</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-semibold">Chicken Breast, Grilled</td>
+              <td class="text-muted">100g</td>
+              <td>165 cal</td>
+              <td><a href="food-details.html" class="btn btn-outline-info btn-sm">Select</a></td>
+            </tr>
+            <tr>
+              <td class="fw-semibold">Chicken Thigh, Roasted</td>
+              <td class="text-muted">100g</td>
+              <td>209 cal</td>
+              <td><a href="food-details.html" class="btn btn-outline-info btn-sm">Select</a></td>
+            </tr>
+            <tr>
+              <td class="fw-semibold">Chicken Soup</td>
+              <td class="text-muted">1 cup</td>
+              <td>75 cal</td>
+              <td><a href="food-details.html" class="btn btn-outline-info btn-sm">Select</a></td>
+            </tr>
+            <tr>
+              <td class="fw-semibold">Chicken Caesar Salad</td>
+              <td class="text-muted">1 serving</td>
+              <td>470 cal</td>
+              <td><a href="food-details.html" class="btn btn-outline-info btn-sm">Select</a></td>
+            </tr>
+            <tr>
+              <td class="fw-semibold">Chicken Nuggets (6 pc)</td>
+              <td class="text-muted">6 pieces</td>
+              <td>280 cal</td>
+              <td><a href="food-details.html" class="btn btn-outline-info btn-sm">Select</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
