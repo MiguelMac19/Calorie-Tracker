@@ -1,36 +1,60 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<div class="container my-5">
-  <h2 class="mb-4">Admin Dashboard</h2>
-  <div class="row g-4 mb-5">
-    <div class="col-md-3">
-      <div class="card text-center bg-primary text-white p-3">
-        <h3>102975091</h3>
-        <p class="mb-0">Total Users</p>
-      </div>
+
+<nav class="navbar navbar-dark navbar-expand">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Calorie<span>Track</span></a>
+    <div class="navbar-nav me-auto">
+      <a href="admin-dashboard.html" class="nav-link active">Admin Dashboard</a>
+      <a href="food-database-browser.html" class="nav-link">Food Database Browser</a>
+      <a href="add-food.html" class="nav-link">Add Food</a>
+      <a href="user-management.html" class="nav-link">Manage Users</a>
     </div>
-    <div class="col-md-3">
-      <div class="card text-center bg-info text-white p-3">
-        <h3>1208950915</h3>
-        <p class="mb-0">Premium Users</p>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="card text-center bg-success text-white p-3">
-        <h3>1230985098</h3>
-        <p class="mb-0">Food Items</p>
-      </div>
+    <div class="d-flex gap-2 align-items-center">
+      <a href="" class="btn btn-outline-light btn-sm">Upgrade</a>
+      <span class="text-white-50 small">John Doe</span>
     </div>
   </div>
-  
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card p-4">
-        <h5>Quick Actions</h5>
-        <div class="d-grid gap-2">
-          <a href="add-food.html" class="btn btn-outline-primary">Add New Food</a>
-          <a href="food-database-browser.html" class="btn btn-outline-primary">Browse Food Database</a>
-          <a href="user-management.html" class="btn btn-outline-primary">Manage Subscribers</a>
+</nav>
+
+
+<div class="container my-4" style="max-width: 1000px;">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Platform Overview</h2>
+      <p class="text-muted mb-0">System Status: <span class="text-success">Active</span></p>
+    </div>
+    <div class="d-flex gap-2">
+      <a href="food-database-browser.html" class="btn btn-outline-info">View Database</a>
+      <a href="add-food.html" class="btn btn-info text-white">+ Add New Food</a>
+    </div>
+  </div>
+
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-uppercase text-muted small fw-bold mb-2">Total Users</div>
+          <div class="stat-value">1,248</div>
+          <div class="text-muted small">+12 this week</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-uppercase text-muted small fw-bold mb-2">Food Database</div>
+          <div class="stat-value">852</div>
+          <div class="text-muted small">verified entries</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-uppercase text-muted small fw-bold mb-2">Premium Revenue</div>
+          <div class="stat-value">342</div>
+          <div class="text-muted small">active subscribers</div>
         </div>
       </div>
     </div>

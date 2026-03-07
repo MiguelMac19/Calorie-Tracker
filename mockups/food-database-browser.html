@@ -1,32 +1,128 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
 
-<div class="container my-5">
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Food Database</h2>
-    <a href="add-food.html" class="btn btn-info text-white">+ Add Food</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Search</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+
+<nav class="navbar navbar-dark navbar-expand">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Calorie<span>Track</span></a>
+    <div class="navbar-nav me-auto">
+      <a href="admin-dashboard.html" class="nav-link">Admin Dashboard</a>
+      <a href="food-database-browser.html" class="nav-link active">Food Database Browser</a>
+      <a href="add-food.html" class="nav-link">Add Food</a>
+      <a href="user-management.html" class="nav-link">Manage Users</a>
+    </div>
+    <div class="d-flex gap-2 align-items-center">
+      <a href="" class="btn btn-outline-light btn-sm">Upgrade</a>
+      <span class="text-white-50 small">John Doe</span>
+    </div>
   </div>
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <input type="text" class="form-control mb-3" placeholder="Search database...">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Food Name</th>
-            <th>Calories</th>
-            <th>Serving Size</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Grilled Chicken</td><td>165</td><td>100g</td>
-            <td>
-                <a class="btn btn-sm btn-warning" href="edit-food.html">Edit</a> 
-                <button class="btn btn-sm btn-danger">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+</nav>
+
+
+<div class="container" style="max-width: 700px;">
+  <div class="my-4">
+    <h2 class="mb-4">Food Database Browser</h2>
+
+    
+    <div class="card mb-4">
+      <div class="card-body">
+        <label class="form-label">Search for a food item</label>
+        <div class="input-group mb-2">
+          <input class="form-control" type="text" placeholder="e.g. apple, chicken breast, brown rice..." value="chicken">
+          <a href="" class="btn btn-info text-white">Search</a>
+        </div>
+        <div class="form-text">Enter at least 1 character. Results show food name, serving size, and calories.</div>
+
+       
+        <div class="alert alert-danger mt-2" style="display: none;">
+          Please enter a food name to search.
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="text-muted small mb-2">Showing <strong>5 results</strong> for "chicken"</div>
+    <div class="card">
+      <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+          <thead>
+            <tr>
+              <th>Food Name</th>
+              <th>Serving Size</th>
+              <th>Calories</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-semibold">Chicken Breast, Grilled</td>
+              <td class="text-muted">100g</td>
+              <td>165 cal</td>
+              <td>
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="edit-food.html" class="btn btn-outline-info btn-sm">Edit</a>
+                    <a class="btn btn-sm btn-outline-danger text-danger">Delete</a>
+                </div>
+              </td>            </tr>
+            <tr>
+              <td class="fw-semibold">Chicken Thigh, Roasted</td>
+              <td class="text-muted">100g</td>
+              <td>209 cal</td>
+              <td>
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="edit-food.html" class="btn btn-outline-info btn-sm">Edit</a>
+                    <a class="btn btn-sm btn-outline-danger text-danger">Delete</a>
+                </div>
+              </td>            </tr>
+            <tr>
+              <td class="fw-semibold">Chicken Soup</td>
+              <td class="text-muted">1 cup</td>
+              <td>75 cal</td>
+              <td>
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="edit-food.html" class="btn btn-outline-info btn-sm">Edit</a>
+                    <a class="btn btn-sm btn-outline-danger text-danger">Delete</a>
+                </div>
+              </td>            </tr>
+            <tr>
+              <td class="fw-semibold">Chicken Caesar Salad</td>
+              <td class="text-muted">1 serving</td>
+              <td>470 cal</td>
+              <td>
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="edit-food.html" class="btn btn-outline-info btn-sm">Edit</a>
+                    <a class="btn btn-sm btn-outline-danger text-danger">Delete</a>
+                </div>
+              </td>            </tr>
+            <tr>
+              <td class="fw-semibold">Chicken Nuggets (6 pc)</td>
+              <td class="text-muted">6 pieces</td>
+              <td>280 cal</td>
+              <td>
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="edit-food.html" class="btn btn-outline-info btn-sm">Edit</a>
+                    <a class="btn btn-sm btn-outline-danger text-danger">Delete</a>
+                </div>
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
