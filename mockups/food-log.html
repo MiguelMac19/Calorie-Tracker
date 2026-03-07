@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food Log - March 5 - CalorieTrack</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark navbar-expand">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Calorie<span>Track</span></a>
+        <div class="navbar-nav me-auto">
+          <a href="dashboard.html" class="nav-link">Dashboard</a>
+          <a href="search-food.html" class="nav-link">Search Food</a>
+          <a href="food-log.html" class="nav-link active">My Log</a>
+          <a href="history.html" class="nav-link">History</a>
+          <a href="add-custom-food.html" class="nav-link">Add Custom Food</a>
+        </div>
+        <div class="d-flex gap-2 align-items-center navbar-nav">
+          <a href="premium-upgrade.html" class="btn btn-outline-light btn-sm"
+            >Upgrade</a
+          >
+          <a href="user-management.html" class="nav-link">John Doe</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page header -->
+    <div class="page-header text-center">
+      <div class="container mt-4">
+        <h1 class="mt-2">Thursday, March 6, 2026</h1>
+        <p>Detailed food log for this date</p>
+      </div>
+    </div>
+
+    <!-- Calorie/macronutrient breakdown -->
+    <div class="container mt-4">
+      <div class="row g-3 mb-4 rows-cols-md-5">
+        <div class="col-6 col-md">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <div class="text-muted small">Total Calories</div>
+              <div class="fs-3 fw-bold text-primary">560</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <div class="text-muted small">Protein</div>
+              <div class="fs-3 fw-bold" style="color: #1e40af">34g</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <div class="text-muted small">Carbs</div>
+              <div class="fs-3 fw-bold" style="color: #92400e">36g</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <div class="text-muted small">Fat</div>
+              <div class="fs-3 fw-bold" style="color: #9d174d">32g</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md">
+          <div class="card text-center h-100">
+            <div class="card-body">
+              <div class="text-muted small">Fiber</div>
+              <div class="fs-3 fw-bold" style="color: #92400e">0g</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Example data -->
+    <div class="container mb-5">
+      <!-- Breakfast -->
+      <h5 class="mb-3">
+        <span>Breakfast</span>
+      </h5>
+      <div class="card mb-4">
+        <div class="list-group list-group-flush">
+          <div
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <div>
+              <strong>Scrambled Eggs</strong><br />
+              <small class="text-muted"
+                >2 servings &middot; Logged at 7:30 AM</small
+              ><br />
+              <small>
+                <span class="macro-badge macro-protein">P: 24g</span>
+                <span class="macro-badge macro-carbs">C: 2g</span>
+                <span class="macro-badge macro-fat">F: 22g</span>
+                <span class="macro-badge macro-fiber">Fiber: 0g</span>
+              </small>
+            </div>
+            <div class="text-end">
+              <span class="fw-bold text-primary">360 cal</span>
+              <div class="mt-1">
+                <button class="btn btn-sm btn-outline-secondary me-1">
+                  Edit
+                </button>
+                <button class="btn btn-sm btn-outline-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Snack -->
+      <h5 class="mb-3"><span>Snack</span></h5>
+      <div class="card mb-4">
+        <div class="list-group list-group-flush">
+          <div
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <div>
+              <strong>Greek Yogurt</strong><br />
+              <small class="text-muted"
+                >1 serving &middot; Logged at 3:00 PM</small
+              ><br />
+              <small>
+                <span class="macro-badge macro-protein">P: 10g</span>
+                <span class="macro-badge macro-carbs">C: 34g</span>
+                <span class="macro-badge macro-fat">F: 10g</span>
+                <span class="macro-badge macro-fiber">Fiber: 0g</span>
+              </small>
+            </div>
+            <div class="text-end">
+              <span class="fw-bold text-primary">200 cal</span>
+              <div class="mt-1">
+                <button class="btn btn-sm btn-outline-secondary me-1">
+                  Edit
+                </button>
+                <button class="btn btn-sm btn-outline-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

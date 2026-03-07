@@ -1,46 +1,107 @@
 body {
-      background: #f0f9ff;
-    }
+  background: #f0f9ff;
+}
 
-    .navbar {
-      background: #0c4a6e !important;
-    }
+.navbar {
+  background: #0c4a6e !important;
+}
 
-    .navbar-brand span {
-      color: #7dd3fc;
-    }
+.navbar-brand span {
+  color: #7dd3fc;
+}
 
-    .hero {
-      background: linear-gradient(to bottom right, #0c4a6e, #0369a1);
-      color: white;
-      padding: 80px 20px;
-      text-align: center;
-    }
+.hero {
+  background: linear-gradient(to bottom right, #0c4a6e, #0369a1);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
 
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
 
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
+.hero p {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
 
-    .btn-info {
-      background-color: #0284c7;
-      border-color: #0284c7;
-    }
+.btn-info {
+  background-color: #0284c7;
+  border-color: #0284c7;
+}
 
-    .btn-info:hover {
-      background-color: #0369a1;
-      border-color: #0369a1;
-    }
+.btn-info:hover {
+  background-color: #0369a1;
+  border-color: #0369a1;
+}
 
-    .table thead {
-      background-color: #e0f2fe;
-    }
+.table thead {
+  background-color: #e0f2fe;
+}
 
-    .card {
-      border-radius: 15px;
-    }
+.card {
+  border-radius: 15px;
+}
+
+.page-header {
+  background: linear-gradient(to right, #0c4a6e, #0369a1);
+  color: white;
+  padding: 30px 0;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.page-header p {
+  margin-bottom: 0;
+  opacity: 0.85;
+}
+
+.day-card {
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+  cursor: pointer;
+}
+
+.day-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.macro-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.macro-protein {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.macro-carbs {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.macro-fat {
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+.macro-fiber {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status-active {
+  color: #059669;
+  font-weight: 600;
+}
