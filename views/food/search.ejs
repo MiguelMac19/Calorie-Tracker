@@ -1,0 +1,101 @@
+<%- include('../partials/header') %>
+
+<div class="page-header text-center">
+  <div class="container mt-4">
+    <h1>Search Food Database</h1>
+    <p><%= new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %></p>
+  </div>
+</div>
+
+<div class="container" style="max-width: 700px">
+  <div class="my-4">
+    <div class="card mb-4">
+      <div class="card-body">
+        <form action="/food/search" method="GET">
+          <label class="form-label">Search for a food item</label>
+          <div class="input-group mb-2">
+            <input class="form-control" type="text" name="q" placeholder="e.g. apple, chicken breast..." value="<%= query %>" required>
+            <button class="btn btn-info text-white" type="submit">Search</button>
+          </div>
+          <div class="form-text">Results show food name, serving size, and calories.</div>
+        </form>
+      </div>
+    </div>
+
+    <% if (selectedFood) { %>
+      <div class="card mb-4 border-primary">
+        <div class="card-header bg-info text-white">
+          <h4 class="mb-0"><%= selectedFood.name %></h4>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <span class="text-muted">Standard serving:</span>
+            <strong><%= selectedFood.servingSize %> <%= selectedFood.servingUnit %></strong>
+            <span class="h4 fw-bold d-block mt-1"><%= selectedFood.calories %> cal <small class="text-muted">per serving</small></span>
+          </div>
+
+          <form action="/food/log" method="POST">
+            <input type="hidden" name="foodId" value="<%= selectedFood.id %>">
+            
+            <div class="mb-3">
+              <label class="form-label">Number of Servings</label>
+              <input class="form-control" type="number" name="servings" value="1" min="0.1" step="0.1" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Meal Type</label>
+              <select class="form-select" name="mealType" required>
+                <option value="">— Select meal type —</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Snack">Snack</option>
+              </select>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-info text-white btn-lg">Add to Log</button>
+              <a href="/food/search?q=<%= query %>" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    <% } %>
+
+    <% if (results.length > 0) { %>
+      <div class="text-muted small mb-2">
+        Showing <strong><%= results.length %> results</strong> for "<%= query %>"
+      </div>
+      <div class="card">
+        <div class="card-body p-0">
+          <table class="table table-hover mb-0">
+            <thead>
+              <tr>
+                <th>Food Name</th>
+                <th>Serving</th>
+                <th>Calories</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% results.forEach(food => { %>
+                <tr>
+                  <td class="fw-semibold"><%= food.name %></td>
+                  <td class="text-muted"><%= food.servingSize %> <%= food.servingUnit %></td>
+                  <td><%= food.calories %> cal</td>
+                  <td>
+                    <a href="/food/<%= food.id %>?q=<%= query %>" class="btn btn-outline-info btn-sm">Select</a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% } else if (query) { %>
+      <div class="alert alert-warning">No foods found matching "<%= query %>".</div>
+    <% } %>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
