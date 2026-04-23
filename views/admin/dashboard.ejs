@@ -1,0 +1,43 @@
+<%- include('../partials/header') %>
+<div class="container my-4">
+  <h2>Platform Overview</h2>
+  <div class="row g-3 mb-4">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-muted small fw-bold">TOTAL USERS</div>
+          <div class="h3"><%= totalUsers %></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-muted small fw-bold">PREMIUM USERS</div>
+          <div class="h3"><%= premiumUsers %></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-muted small fw-bold">FOOD DATABASE</div>
+          <div class="h3"><%= totalFoods %></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="text-muted small fw-bold">TOTAL LOGS</div>
+          <div class="h3"><%= totalLogs %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-flex gap-2">
+    <a href="/admin/foods" class="btn btn-primary">Manage Food Database</a>
+    <a href="/admin/users" class="btn btn-secondary">Manage Users</a>
+  </div>
+</div>
+<%- include('../partials/footer') %>

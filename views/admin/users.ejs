@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+<div class="container my-4">
+  <h2>User Management</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><span class="badge bg-secondary"><%= user.role %></span></td>
+          <td>
+            <% if (user.isBanned) { %>
+              <span class="text-danger">Banned</span>
+            <% } else { %>
+              <span class="text-success">Active</span>
+            <% } %>
+          </td>
+          <td>
+            <% if (user.role === 'free') { %>
+              <form action="/admin/users/<%= user.id %>/promote" method="POST" style="display:inline;">
+                <button class="btn btn-sm btn-warning">Promote to Premium</button>
+              </form>
+            <% } %>
+            <form action="/admin/users/<%= user.id %>/ban" method="POST" style="display:inline;">
+              <button class="btn btn-sm btn-outline-danger">
+                <%= user.isBanned ? 'Unban' : 'Ban' %>
+              </button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+<%- include('../partials/footer') %>

@@ -6,6 +6,8 @@ const { sequelize } = require('./models');
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // View Engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +26,21 @@ app.use(session({
 // Make user available in all views
 app.use((req, res, next) => {
   res.locals.user = req.session.user || null;
+  next();
+});
+
+
+// Temporary Developer Bypass
+app.use((req, res, next) => {
+  // Only use this during local development
+  if (!req.session.user) {
+    req.session.user = {
+      id: 1,
+      name: 'Dev Admin',
+      email: 'admin@test.com',
+      role: 'admin' // To bypass requireAdmin checks
+    };
+  }
   next();
 });
 
