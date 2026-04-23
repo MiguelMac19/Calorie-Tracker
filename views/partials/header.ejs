@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalorieTrack</title>
+</head>
+<body>
+
+<nav>
+  <a href="/">CalorieTrack</a>
+  <% if (user) { %>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/food/search">Add Food</a>
+    <% if (user.role === 'premium' || user.role === 'admin') { %>
+      <a href="/premium/history">History</a>
+    <% } %>
+    <% if (user.role === 'admin') { %>
+      <a href="/admin">Admin</a>
+    <% } %>
+    <span>Hi, <%= user.name %></span>
+    <form action="/logout" method="POST" style="display:inline;">
+      <button type="submit">Log Out</button>
+    </form>
+  <% } else { %>
+    <a href="/login">Log In</a>
+    <a href="/register">Sign Up</a>
+  <% } %>
+</nav>
