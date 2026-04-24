@@ -1,6 +1,19 @@
 <%- include('../partials/header') %>
 <div class="container my-4">
   <h2>User Management</h2>
+
+  <% if (typeof success !== 'undefined' && success) { %>
+    <% if (success === 'promoted') { %>
+      <div class="alert alert-success">User promoted to Premium.</div>
+    <% } else if (success === 'made_admin') { %>
+      <div class="alert alert-success">User promoted to Admin.</div>
+    <% } else if (success === 'demoted') { %>
+      <div class="alert alert-success">User demoted to Free.</div>
+    <% } else if (success === 'ban_updated') { %>
+      <div class="alert alert-success">User ban status updated.</div>
+    <% } %>
+  <% } %>
+
   <table class="table">
     <thead>
       <tr>
@@ -12,29 +25,53 @@
       </tr>
     </thead>
     <tbody>
-      <% users.forEach(user => { %>
+      <% users.forEach(u => { %>
         <tr>
-          <td><%= user.name %></td>
-          <td><%= user.email %></td>
-          <td><span class="badge bg-secondary"><%= user.role %></span></td>
+          <td><%= u.name %></td>
+          <td><%= u.email %></td>
           <td>
-            <% if (user.isBanned) { %>
+            <% if (u.role === 'admin') { %>
+              <span class="badge bg-danger"><%= u.role %></span>
+            <% } else if (u.role === 'premium') { %>
+              <span class="badge bg-warning text-dark"><%= u.role %></span>
+            <% } else { %>
+              <span class="badge bg-secondary"><%= u.role %></span>
+            <% } %>
+          </td>
+          <td>
+            <% if (u.isBanned) { %>
               <span class="text-danger">Banned</span>
             <% } else { %>
               <span class="text-success">Active</span>
             <% } %>
           </td>
           <td>
-            <% if (user.role === 'free') { %>
-              <form action="/admin/users/<%= user.id %>/promote" method="POST" style="display:inline;">
+            <% if (u.role === 'free') { %>
+              <form action="/admin/users/<%= u.id %>/promote" method="POST" style="display:inline;">
                 <button class="btn btn-sm btn-warning">Promote to Premium</button>
               </form>
+              <form action="/admin/users/<%= u.id %>/make-admin" method="POST" style="display:inline;" onsubmit="return confirm('Make this user an admin? They will have full admin privileges.')">
+                <button class="btn btn-sm btn-danger">Make Admin</button>
+              </form>
+            <% } else if (u.role === 'premium') { %>
+              <form action="/admin/users/<%= u.id %>/demote" method="POST" style="display:inline;" onsubmit="return confirm('Demote this user to Free? They will lose premium features.')">
+                <button class="btn btn-sm btn-secondary">Demote to Free</button>
+              </form>
+              <form action="/admin/users/<%= u.id %>/make-admin" method="POST" style="display:inline;" onsubmit="return confirm('Make this user an admin? They will have full admin privileges.')">
+                <button class="btn btn-sm btn-danger">Make Admin</button>
+              </form>
+            <% } else if (u.role === 'admin') { %>
+              <form action="/admin/users/<%= u.id %>/demote" method="POST" style="display:inline;" onsubmit="return confirm('Remove admin privileges from this user? They will become a Free user.')">
+                <button class="btn btn-sm btn-secondary">Remove Admin</button>
+              </form>
             <% } %>
-            <form action="/admin/users/<%= user.id %>/ban" method="POST" style="display:inline;">
-              <button class="btn btn-sm btn-outline-danger">
-                <%= user.isBanned ? 'Unban' : 'Ban' %>
-              </button>
-            </form>
+            <% if (u.role !== 'admin') { %>
+              <form action="/admin/users/<%= u.id %>/ban" method="POST" style="display:inline;">
+                <button class="btn btn-sm btn-outline-danger">
+                  <%= u.isBanned ? 'Unban' : 'Ban' %>
+                </button>
+              </form>
+            <% } %>
           </td>
         </tr>
       <% }) %>

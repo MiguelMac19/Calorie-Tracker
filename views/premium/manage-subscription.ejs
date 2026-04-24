@@ -1,0 +1,143 @@
+<%- include('../partials/header') %>
+
+<div class="page-header text-center">
+  <div class="container mt-4">
+    <h1>Manage Subscription</h1>
+    <p>View and manage your premium subscription</p>
+  </div>
+</div>
+
+<div class="container my-4" style="max-width: 700px;">
+
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+
+  <% if (success === 'cancelled') { %>
+    <div class="alert alert-success">
+      <strong>Subscription cancelled.</strong> You will retain premium access until the end of your current billing period.
+    </div>
+  <% } %>
+
+  <% if (subscription) { %>
+
+    <!-- Subscription Details -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5 class="mb-0">Subscription Details</h5>
+      </div>
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="col-sm-4 text-muted">Current Plan</div>
+          <div class="col-sm-8">
+            <span class="badge bg-warning text-dark">Premium</span>
+            <% if (subscription.cancelAtPeriodEnd) { %>
+              <span class="badge bg-danger ms-1">Cancelling at period end</span>
+            <% } else { %>
+              <span class="status-active ms-2">Active</span>
+            <% } %>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-4 text-muted">Member Since</div>
+          <div class="col-sm-8">
+            <% if (subscription.premiumSince) { %>
+              <%= new Date(subscription.premiumSince).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+            <% } else { %>
+              N/A
+            <% } %>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-4 text-muted">
+            <% if (subscription.cancelAtPeriodEnd) { %>
+              Access Ends
+            <% } else { %>
+              Next Billing Date
+            <% } %>
+          </div>
+          <div class="col-sm-8">
+            <% if (subscription.nextBillingDate) { %>
+              <%= new Date(subscription.nextBillingDate + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+              <% if (subscription.cancelAtPeriodEnd) { %>
+                <span class="text-danger small ms-1">(premium ends this date)</span>
+              <% } %>
+            <% } else { %>
+              N/A
+            <% } %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 text-muted">Monthly Price</div>
+          <div class="col-sm-8 fw-bold">
+            <% if (subscription.cancelAtPeriodEnd) { %>
+              <span class="text-decoration-line-through text-muted">$9.99/month</span>
+              <span class="text-danger ms-1">Cancelled</span>
+            <% } else { %>
+              $9.99/month
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Method -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h5 class="mb-0">Payment Method</h5>
+      </div>
+      <div class="card-body">
+        <div class="d-flex align-items-center">
+          <div class="me-3" style="font-size: 24px;">&#128179;</div>
+          <div>
+            <% if (subscription.paymentLast4 && subscription.paymentLast4 !== '••••') { %>
+              <div class="fw-semibold">Card ending in <%= subscription.paymentLast4 %></div>
+              <div class="text-muted small">•••• •••• •••• <%= subscription.paymentLast4 %></div>
+            <% } else { %>
+              <div class="fw-semibold">No payment method on file</div>
+              <div class="text-muted small">Payment information unavailable</div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cancel Subscription -->
+    <div class="card <%= subscription.cancelAtPeriodEnd ? 'border-secondary' : 'border-danger' %>">
+      <div class="card-header <%= subscription.cancelAtPeriodEnd ? 'bg-secondary' : 'bg-danger' %> text-white">
+        <h5 class="mb-0">Cancel Subscription</h5>
+      </div>
+      <div class="card-body">
+        <% if (subscription.cancelAtPeriodEnd) { %>
+          <div class="text-center py-3">
+            <div style="font-size: 48px; margin-bottom: 10px;">&#10003;</div>
+            <h5 class="text-muted">Subscription Cancelled</h5>
+            <p class="text-muted mb-0">
+              Your subscription has been cancelled. You will retain premium access until
+              <% if (subscription.nextBillingDate) { %>
+                <strong><%= new Date(subscription.nextBillingDate + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></strong>.
+              <% } else { %>
+                the end of your billing period.
+              <% } %>
+              After that date, you will be downgraded to the free plan and lose access to your food log history, macronutrient information, and custom foods.
+            </p>
+          </div>
+        <% } else { %>
+          <p class="text-muted">
+            If you cancel your subscription, you will retain premium access until the end of your current billing period
+            <% if (subscription.nextBillingDate) { %>
+              (<%= new Date(subscription.nextBillingDate + 'T00:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>)
+            <% } %>.
+            After that date, you will be downgraded to the free plan and lose access to your food log history, macronutrient information, and custom foods.
+          </p>
+          <form action="/premium/subscription/cancel" method="POST" onsubmit="return confirm('Are you sure that you want to cancel your subscription? You will retain premium access until the end of your current billing period. After that, you will be downgraded to the free plan and lose access to your food log, macronutrient information, and custom foods.')">
+            <button type="submit" class="btn btn-outline-danger">Cancel Subscription</button>
+          </form>
+        <% } %>
+      </div>
+    </div>
+
+  <% } %>
+</div>
+
+<%- include('../partials/footer') %>
