@@ -1,9 +1,73 @@
 <%- include('partials/header') %>
 
-<h1>Welcome to CalorieTrack</h1>
-<p>Track your daily calories and reach your goals.</p>
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1>Track Calories.<br>Reach Your Goals.</h1>
+    <p class="mx-auto" style="max-width: 500px;">A clean and simple way to track your daily meals and stay on top of your nutrition.</p>
+    <div class="d-flex gap-3 justify-content-center">
+      <a href="/register" class="btn btn-light btn-lg">Get Started Free!</a>
+      <a href="/login" class="btn btn-outline-light btn-lg">Log In</a>
+    </div>
+  </div>
+</section>
 
-<a href="/register">Sign Up Free</a> |
-<a href="/login">Log In</a>
+<!-- Features -->
+<div class="container my-5">
+  <h2 class="text-center mb-4">Why CalorieTrack?</h2>
+  <div class="row g-3 mb-5">
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Search the Nutrition Database</h5>
+          <p class="card-text text-muted">Browse our extensive nutrition database and find accurate calorie information instantly.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Log Meals with Ease</h5>
+          <p class="card-text text-muted">Tracking your meals is simple. Add items to your daily log in seconds.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">Track Your Progress</h5>
+          <p class="card-text text-muted">View daily calorie totals at a glance. Premium members also get 30 day history tracking.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Free vs Premium -->
+  <h2 class="text-center mb-4">Free vs Premium</h2>
+  <div class="card mx-auto" style="max-width: 600px;">
+    <div class="card-body p-0">
+      <table class="table table-striped mb-0">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="text-center">Free</th>
+            <th class="text-center">Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Search Nutrition Database</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+          <tr><td>Log Daily Meals</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+          <tr><td>View Today's Dashboard</td><td class="text-center">Yes</td><td class="text-center">Yes</td></tr>
+          <tr><td>30 Day History</td><td class="text-center">No</td><td class="text-center">Yes</td></tr>
+          <tr><td>Create and Track Custom Meals</td><td class="text-center">No</td><td class="text-center">Yes</td></tr>
+          <tr><td>Macronutrient Tracking</td><td class="text-center">No</td><td class="text-center">Yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer text-center bg-white">
+      <a href="/register" class="btn btn-info text-white btn-lg">Sign Up Free</a>
+    </div>
+  </div>
+</div>
 
 <%- include('partials/footer') %>
