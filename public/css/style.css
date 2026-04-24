@@ -1,9 +1,22 @@
+html, body {
+  height: 100%;
+}
+
 body {
   background: #f0f9ff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.site-content {
+  flex: 1;
 }
 
 .navbar {
   background: #0c4a6e !important;
+  margin-bottom: 0 !important;
 }
 
 .navbar-brand span {
@@ -95,7 +108,7 @@ footer {
   color: white;
   text-align: center;
   padding: 20px;
-  margin-top: 50px;
+  margin-top: auto;
 }
 
 .page-header {

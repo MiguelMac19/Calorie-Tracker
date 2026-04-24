@@ -1,0 +1,98 @@
+<%- include('../partials/header') %>
+
+<div class="page-header text-center">
+  <div class="container mt-4">
+    <h1>Upgrade to Premium</h1>
+    <p>Unlock powerful features to supercharge your nutrition tracking</p>
+  </div>
+</div>
+
+<div class="container my-4" style="max-width: 900px;">
+
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+
+  <!-- Feature Comparison -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-header bg-light text-center">
+          <h4 class="mb-0">Free Plan</h4>
+          <p class="text-muted mb-0">Current Plan</p>
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled">
+            <li class="mb-2">&#10003; Search food database</li>
+            <li class="mb-2">&#10003; Log daily meals</li>
+            <li class="mb-2">&#10003; View today's calorie total</li>
+            <li class="mb-2">&#10003; Edit/delete today's entries</li>
+            <li class="mb-2 text-muted">&#10007; 30-day food log history</li>
+            <li class="mb-2 text-muted">&#10007; Macronutrient breakdown</li>
+            <li class="mb-2 text-muted">&#10007; Custom food creation</li>
+          </ul>
+        </div>
+        <div class="card-footer text-center bg-light">
+          <span class="h4 text-muted">$0</span><span class="text-muted">/month</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="card h-100 border-warning">
+        <div class="card-header bg-warning text-dark text-center">
+          <h4 class="mb-0">Premium Plan</h4>
+          <p class="mb-0">Recommended</p>
+        </div>
+        <div class="card-body">
+          <ul class="list-unstyled">
+            <li class="mb-2">&#10003; Everything in Free</li>
+            <li class="mb-2"><strong>&#10003; 30-day food log history</strong></li>
+            <li class="mb-2"><strong>&#10003; Macronutrient breakdown</strong> (protein, carbs, fat, fiber)</li>
+            <li class="mb-2"><strong>&#10003; Create custom foods</strong></li>
+            <li class="mb-2"><strong>&#10003; Edit/delete past entries</strong></li>
+            <li class="mb-2"><strong>&#10003; Daily macro totals</strong></li>
+          </ul>
+        </div>
+        <div class="card-footer text-center" style="background-color: #fef3c7;">
+          <span class="h4">$9.99</span><span class="text-muted">/month</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Form -->
+  <div class="card border-warning mb-4">
+    <div class="card-header bg-warning text-dark">
+      <h5 class="mb-0">Enter Payment Information</h5>
+    </div>
+    <div class="card-body">
+      <form action="/premium/upgrade" method="POST">
+        <div class="mb-3">
+          <label class="form-label">Name on Card</label>
+          <input type="text" name="cardName" class="form-control" placeholder="John Doe" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Card Number</label>
+          <input type="text" name="cardNumber" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" required>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Expiration Date</label>
+            <input type="text" name="cardExpiry" class="form-control" placeholder="MM/YY" maxlength="5" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">CVC</label>
+            <input type="text" name="cardCvc" class="form-control" placeholder="123" maxlength="4" required>
+          </div>
+        </div>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-warning btn-lg fw-bold">Upgrade to Premium — $9.99/month</button>
+          <a href="/dashboard" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

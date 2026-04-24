@@ -1,0 +1,83 @@
+<%- include('../partials/header') %>
+
+<div class="page-header text-center">
+  <div class="container mt-4">
+    <h1>30-Day Food Log History</h1>
+    <p>Review your nutrition over the past 30 days</p>
+  </div>
+</div>
+
+<div class="container my-4" style="max-width: 800px;">
+
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+
+  <!-- Date Search Bar -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <form action="/premium/history" method="GET" class="row g-2 align-items-end">
+        <div class="col-md-8">
+          <label class="form-label">Search by Date</label>
+          <input type="date" name="date" class="form-control"
+            value="<%= searchDate || '' %>"
+            max="<%= new Date().toISOString().split('T')[0] %>"
+            min="<%= (() => { const d = new Date(); d.setDate(d.getDate() - 29); return d.toISOString().split('T')[0]; })() %>">
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-info text-white w-100" type="submit">Search</button>
+        </div>
+        <div class="col-md-2">
+          <% if (searchDate) { %>
+            <a href="/premium/history" class="btn btn-outline-secondary w-100">Clear</a>
+          <% } %>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Day Cards -->
+  <% if (history.length === 0 && searchDate) { %>
+    <div class="alert alert-warning text-center">No data logged on this date.</div>
+  <% } %>
+
+  <% if (history.length === 0 && !searchDate) { %>
+    <div class="alert alert-info text-center">No food logged in the past 30 days. <a href="/food/search">Start logging!</a></div>
+  <% } %>
+
+  <div class="row g-3">
+    <% history.forEach(day => { %>
+      <div class="col-12">
+        <a href="/premium/history/<%= day.date %>" class="text-decoration-none">
+          <div class="card day-card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <div>
+                  <h5 class="mb-0 text-dark">
+                    <%= new Date(day.date + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) %>
+                  </h5>
+                  <span class="text-muted small"><%= day.entryCount %> entr<%= day.entryCount === 1 ? 'y' : 'ies' %> logged</span>
+                </div>
+                <div class="text-end">
+                  <span class="stat-value" style="font-size: 24px;"><%= day.totalCalories %></span>
+                  <span class="text-muted">cal</span>
+                </div>
+              </div>
+
+              <% if (day.entryCount > 0) { %>
+                <div class="mt-2">
+                  <span class="macro-badge macro-protein">Protein: <%= day.totalProtein %>g</span>
+                  <span class="macro-badge macro-carbs">Carbs: <%= day.totalCarbs %>g</span>
+                  <span class="macro-badge macro-fat">Fat: <%= day.totalFat %>g</span>
+                  <span class="macro-badge macro-fiber">Fiber: <%= day.totalFiber %>g</span>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

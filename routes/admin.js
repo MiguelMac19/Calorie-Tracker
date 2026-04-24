@@ -12,6 +12,8 @@ router.post('/foods/:id', requireAdmin, adminController.postEditFood);
 router.post('/foods/:id/delete', requireAdmin, adminController.deleteFood);
 router.get('/users', requireAdmin, adminController.getUsers);
 router.post('/users/:id/promote', requireAdmin, adminController.promoteUser);
+router.post('/users/:id/make-admin', requireAdmin, adminController.makeAdmin);
+router.post('/users/:id/demote', requireAdmin, adminController.demoteUser);
 router.post('/users/:id/ban', requireAdmin, adminController.toggleBan);
 
 module.exports = router;

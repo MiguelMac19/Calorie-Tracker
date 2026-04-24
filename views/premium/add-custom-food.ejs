@@ -1,0 +1,138 @@
+<%- include('../partials/header') %>
+
+<div class="page-header text-center">
+  <div class="container mt-4">
+    <h1>Custom Foods</h1>
+    <p>Create and manage your own custom food items</p>
+  </div>
+</div>
+
+<div class="container my-4">
+
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="alert alert-danger"><%= error %></div>
+  <% } %>
+
+  <% if (success === 'created') { %>
+    <div class="alert alert-success">Custom food created successfully!</div>
+  <% } else if (success === 'updated') { %>
+    <div class="alert alert-success">Custom food updated successfully!</div>
+  <% } else if (success === 'deleted') { %>
+    <div class="alert alert-success">Custom food deleted successfully.</div>
+  <% } %>
+
+  <div class="row g-4">
+
+    <!-- Left Column: Create / Edit Form -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0"><%= editFood ? 'Edit Custom Food' : 'Add New Custom Food' %></h5>
+        </div>
+        <div class="card-body">
+          <form action="<%= editFood ? '/premium/custom-foods/' + editFood.id : '/premium/custom-foods' %>" method="POST">
+
+            <div class="mb-3">
+              <label class="form-label">Food Name <span class="text-danger">*</span></label>
+              <input type="text" name="name" class="form-control" placeholder="e.g. Homemade Granola" value="<%= editFood ? editFood.name : '' %>" required>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Serving Size <span class="text-danger">*</span></label>
+                <input type="number" name="servingSize" class="form-control" step="0.1" min="0.1" placeholder="1" value="<%= editFood ? editFood.servingSize : '' %>" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Serving Unit <span class="text-danger">*</span></label>
+                <input type="text" name="servingUnit" class="form-control" placeholder="e.g. cup, 100g, slice" value="<%= editFood ? editFood.servingUnit : '' %>" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Calories per Serving <span class="text-danger">*</span></label>
+              <input type="number" name="calories" class="form-control" min="0" placeholder="250" value="<%= editFood ? editFood.calories : '' %>" required>
+            </div>
+
+            <hr>
+            <h6 class="text-muted mb-3">Macronutrients (per serving)</h6>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Protein (g) <span class="text-danger">*</span></label>
+                <input type="number" name="protein" class="form-control" step="0.1" min="0" placeholder="0" value="<%= editFood ? editFood.protein : '' %>" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Carbohydrates (g) <span class="text-danger">*</span></label>
+                <input type="number" name="carbs" class="form-control" step="0.1" min="0" placeholder="0" value="<%= editFood ? editFood.carbs : '' %>" required>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Fat (g) <span class="text-danger">*</span></label>
+                <input type="number" name="fat" class="form-control" step="0.1" min="0" placeholder="0" value="<%= editFood ? editFood.fat : '' %>" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Fiber (g) <span class="text-danger">*</span></label>
+                <input type="number" name="fiber" class="form-control" step="0.1" min="0" placeholder="0" value="<%= editFood ? editFood.fiber : '' %>" required>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-info text-white btn-lg">
+                <%= editFood ? 'Save Changes' : 'Save Custom Food' %>
+              </button>
+              <% if (editFood) { %>
+                <a href="/premium/custom-foods" class="btn btn-outline-secondary">Cancel Edit</a>
+              <% } %>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Existing Custom Foods -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Your Custom Foods</h5>
+        </div>
+        <div class="card-body">
+          <% if (customFoods.length === 0) { %>
+            <p class="text-muted text-center my-4">You haven't created any custom foods yet. Use the form to add your first one!</p>
+          <% } else { %>
+            <div class="list-group list-group-flush">
+              <% customFoods.forEach(food => { %>
+                <div class="list-group-item">
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div class="flex-grow-1">
+                      <h6 class="mb-1 fw-semibold"><%= food.name %></h6>
+                      <div class="small text-muted mb-1">
+                        <%= food.servingSize %> <%= food.servingUnit %> &middot; <strong><%= food.calories %> cal</strong>
+                      </div>
+                      <div class="d-flex flex-wrap gap-1">
+                        <span class="macro-badge macro-protein" style="font-size: 11px;">P: <%= food.protein %>g</span>
+                        <span class="macro-badge macro-carbs" style="font-size: 11px;">C: <%= food.carbs %>g</span>
+                        <span class="macro-badge macro-fat" style="font-size: 11px;">F: <%= food.fat %>g</span>
+                        <span class="macro-badge macro-fiber" style="font-size: 11px;">Fb: <%= food.fiber %>g</span>
+                      </div>
+                    </div>
+                    <div class="d-flex flex-column gap-1 ms-2">
+                      <a href="/premium/custom-foods/<%= food.id %>/edit" class="btn btn-sm btn-outline-info">Edit</a>
+                      <form action="/premium/custom-foods/<%= food.id %>/delete" method="POST" onsubmit="return confirm('Delete this custom food? This action cannot be undone.')">
+                        <button class="btn btn-sm btn-outline-danger w-100">Delete</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

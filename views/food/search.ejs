@@ -17,15 +17,22 @@
             <input class="form-control" type="text" name="q" placeholder="e.g. apple, chicken breast..." value="<%= query %>" required>
             <button class="btn btn-info text-white" type="submit">Search</button>
           </div>
-          <div class="form-text">Results show food name, serving size, and calories.</div>
+          <div class="form-text">Searches the local database and USDA FoodData Central.</div>
         </form>
       </div>
     </div>
 
     <% if (selectedFood) { %>
       <div class="card mb-4 border-primary">
-        <div class="card-header bg-info text-white">
+        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
           <h4 class="mb-0"><%= selectedFood.name %></h4>
+          <% if (selectedFood.source === 'usda') { %>
+            <span class="badge bg-success">USDA</span>
+          <% } else if (selectedFood.source === 'custom') { %>
+            <span class="badge bg-warning text-dark">Custom</span>
+          <% } else { %>
+            <span class="badge bg-light text-dark">Local</span>
+          <% } %>
         </div>
         <div class="card-body">
           <div class="mb-3">
@@ -34,8 +41,28 @@
             <span class="h4 fw-bold d-block mt-1"><%= selectedFood.calories %> cal <small class="text-muted">per serving</small></span>
           </div>
 
+          <% if (user && (user.role === 'premium' || user.role === 'admin')) { %>
+            <% if (selectedFood.protein != null || selectedFood.carbs != null || selectedFood.fat != null || selectedFood.fiber != null) { %>
+              <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="macro-badge macro-protein">Protein: <%= selectedFood.protein != null ? selectedFood.protein + 'g' : 'N/A' %></span>
+                <span class="macro-badge macro-carbs">Carbs: <%= selectedFood.carbs != null ? selectedFood.carbs + 'g' : 'N/A' %></span>
+                <span class="macro-badge macro-fat">Fat: <%= selectedFood.fat != null ? selectedFood.fat + 'g' : 'N/A' %></span>
+                <span class="macro-badge macro-fiber">Fiber: <%= selectedFood.fiber != null ? selectedFood.fiber + 'g' : 'N/A' %></span>
+              </div>
+            <% } %>
+          <% } %>
+
           <form action="/food/log" method="POST">
             <input type="hidden" name="foodId" value="<%= selectedFood.id %>">
+            <input type="hidden" name="foodSource" value="<%= selectedFood.source %>">
+            <input type="hidden" name="foodName" value="<%= selectedFood.name %>">
+            <input type="hidden" name="foodCalories" value="<%= selectedFood.calories %>">
+            <input type="hidden" name="foodServingSize" value="<%= selectedFood.servingSize %>">
+            <input type="hidden" name="foodServingUnit" value="<%= selectedFood.servingUnit %>">
+            <input type="hidden" name="foodProtein" value="<%= selectedFood.protein %>">
+            <input type="hidden" name="foodCarbs" value="<%= selectedFood.carbs %>">
+            <input type="hidden" name="foodFat" value="<%= selectedFood.fat %>">
+            <input type="hidden" name="foodFiber" value="<%= selectedFood.fiber %>">
             
             <div class="mb-3">
               <label class="form-label">Number of Servings</label>
@@ -46,10 +73,10 @@
               <label class="form-label">Meal Type</label>
               <select class="form-select" name="mealType" required>
                 <option value="">— Select meal type —</option>
-                <option value="Breakfast">Breakfast</option>
-                <option value="Lunch">Lunch</option>
-                <option value="Dinner">Dinner</option>
-                <option value="Snack">Snack</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="snack">Snack</option>
               </select>
             </div>
 
@@ -74,6 +101,7 @@
                 <th>Food Name</th>
                 <th>Serving</th>
                 <th>Calories</th>
+                <th>Source</th>
                 <th></th>
               </tr>
             </thead>
@@ -83,6 +111,15 @@
                   <td class="fw-semibold"><%= food.name %></td>
                   <td class="text-muted"><%= food.servingSize %> <%= food.servingUnit %></td>
                   <td><%= food.calories %> cal</td>
+                  <td>
+                    <% if (food.source === 'usda') { %>
+                      <span class="badge bg-success" style="font-size: 11px;">USDA</span>
+                    <% } else if (food.source === 'custom') { %>
+                      <span class="badge bg-warning text-dark" style="font-size: 11px;">Custom</span>
+                    <% } else { %>
+                      <span class="badge bg-secondary" style="font-size: 11px;">Local</span>
+                    <% } %>
+                  </td>
                   <td>
                     <a href="/food/<%= food.id %>?q=<%= query %>" class="btn btn-outline-info btn-sm">Select</a>
                   </td>

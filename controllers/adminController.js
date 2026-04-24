@@ -37,9 +37,18 @@ exports.getNewFood = (req, res) => {
 
 // POST /admin/foods
 exports.postNewFood = async (req, res) => {
-  const { name, calories, servingSize, servingUnit } = req.body;
+  const { name, calories, servingSize, servingUnit, protein, carbs, fat, fiber } = req.body;
   try {
-    await Food.create({ name, calories: parseInt(calories), servingSize: parseFloat(servingSize), servingUnit });
+    await Food.create({
+      name,
+      calories: parseInt(calories),
+      servingSize: parseFloat(servingSize),
+      servingUnit,
+      protein: protein ? parseFloat(protein) : null,
+      carbs: carbs ? parseFloat(carbs) : null,
+      fat: fat ? parseFloat(fat) : null,
+      fiber: fiber ? parseFloat(fiber) : null
+    });
     res.redirect('/admin/foods?success=added');
   } catch (err) {
     console.error(err);
@@ -60,10 +69,19 @@ exports.getEditFood = async (req, res) => {
 
 // POST /admin/foods/:id
 exports.postEditFood = async (req, res) => {
-  const { name, calories, servingSize, servingUnit } = req.body;
+  const { name, calories, servingSize, servingUnit, protein, carbs, fat, fiber } = req.body;
   try {
     await Food.update(
-      { name, calories: parseInt(calories), servingSize: parseFloat(servingSize), servingUnit },
+      {
+        name,
+        calories: parseInt(calories),
+        servingSize: parseFloat(servingSize),
+        servingUnit,
+        protein: protein ? parseFloat(protein) : null,
+        carbs: carbs ? parseFloat(carbs) : null,
+        fat: fat ? parseFloat(fat) : null,
+        fiber: fiber ? parseFloat(fiber) : null
+      },
       { where: { id: req.params.id } }
     );
     res.redirect('/admin/foods?success=updated');
@@ -89,7 +107,7 @@ exports.deleteFood = async (req, res) => {
 exports.getUsers = async (req, res) => {
   try {
     const users = await User.findAll({
-      where: { role: { [Op.ne]: 'admin' } },
+      where: { id: { [Op.ne]: req.session.user.id } },
       order: [['createdAt', 'DESC']]
     });
     res.render('admin/users', { users, success: req.query.success });
@@ -104,6 +122,28 @@ exports.promoteUser = async (req, res) => {
   try {
     await User.update({ role: 'premium' }, { where: { id: req.params.id } });
     res.redirect('/admin/users?success=promoted');
+  } catch (err) {
+    console.error(err);
+    res.redirect('/admin/users');
+  }
+};
+
+// POST /admin/users/:id/make-admin
+exports.makeAdmin = async (req, res) => {
+  try {
+    await User.update({ role: 'admin' }, { where: { id: req.params.id } });
+    res.redirect('/admin/users?success=made_admin');
+  } catch (err) {
+    console.error(err);
+    res.redirect('/admin/users');
+  }
+};
+
+// POST /admin/users/:id/demote
+exports.demoteUser = async (req, res) => {
+  try {
+    await User.update({ role: 'free' }, { where: { id: req.params.id } });
+    res.redirect('/admin/users?success=demoted');
   } catch (err) {
     console.error(err);
     res.redirect('/admin/users');

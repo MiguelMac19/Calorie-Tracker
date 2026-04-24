@@ -1,11 +1,15 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-const Food = sequelize.define('Food', {
+const CustomFood = sequelize.define('CustomFood', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
+  },
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   },
   name: {
     type: DataTypes.STRING,
@@ -27,24 +31,24 @@ const Food = sequelize.define('Food', {
   },
   protein: {
     type: DataTypes.FLOAT,
-    allowNull: true,
-    defaultValue: null
+    allowNull: false,
+    defaultValue: 0
   },
   carbs: {
     type: DataTypes.FLOAT,
-    allowNull: true,
-    defaultValue: null
+    allowNull: false,
+    defaultValue: 0
   },
   fat: {
     type: DataTypes.FLOAT,
-    allowNull: true,
-    defaultValue: null
+    allowNull: false,
+    defaultValue: 0
   },
   fiber: {
     type: DataTypes.FLOAT,
-    allowNull: true,
-    defaultValue: null
+    allowNull: false,
+    defaultValue: 0
   }
 });
 
-module.exports = Food;
+module.exports = CustomFood;
