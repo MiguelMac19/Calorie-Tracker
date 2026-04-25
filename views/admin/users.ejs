@@ -62,7 +62,7 @@
               </form>
             <% } else if (u.role === 'admin') { %>
               <form action="/admin/users/<%= u.id %>/demote" method="POST" style="display:inline;" onsubmit="return confirm('Remove admin privileges from this user? They will become a Free user.')">
-                <button class="btn btn-sm btn-secondary">Remove Admin</button>
+                <button class="btn btn-sm btn-secondary">Remove Admin Status</button>
               </form>
             <% } %>
             <% if (u.role !== 'admin') { %>
